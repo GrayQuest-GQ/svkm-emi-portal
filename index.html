@@ -760,7 +760,7 @@
       <div class="hero-title">GrayQuest Fee Financing</div>
       <div class="hero-sub">Short term EMIs &amp; Long term Loans</div>
     </div>
-    <div class="hero-badge">AY 2026–27</div>
+    <div class="hero-badge">AY 2025–26</div>
   </div>
 </div>
 
@@ -794,7 +794,7 @@
           </div>
         </div>
 
-        <div class="role-card rc-exec" onclick="go('exec')">
+        <div class="role-card rc-exec" onclick="go('email')">
           <div class="role-icon-wrap ri-blue">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M3 18v-6a9 9 0 0 1 18 0v6"/>
@@ -830,6 +830,8 @@
       </div>
     </div>
   </div>
+  <!-- ══════════════════════════════
+       SCREEN 2 — EMAIL VERIFICATION
   ══════════════════════════════ -->
   <div id="screen-email" class="screen">
     <div class="email-section">
@@ -1090,7 +1092,7 @@ function verifyEmail() {
     inp.classList.add('err');
     return;
   }
-  if (!val.endsWith('@grayquest.com')) {
+  if (!val.endsWith('@grayquest.com') && !val.endsWith('@grayquest.co')) {
     errText.textContent = 'We could not verify your access. Please contact your manager.';
     errDiv.classList.add('show');
     inp.classList.add('err');
