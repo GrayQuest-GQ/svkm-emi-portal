@@ -585,9 +585,21 @@
     font-weight: 400;
     color: var(--text-3);
   }
-  .plan-rate {
+  .plan-interest-badge {
+    margin-top: 8px;
     font-size: 11px;
-    color: var(--text-3);
+    font-weight: 500;
+    color: #0A7A5E;
+    background: var(--teal-lt);
+    border: 1px solid var(--teal-md);
+    border-radius: 6px;
+    padding: 4px 8px;
+    display: inline-block;
+    line-height: 1.4;
+  }
+  .plan-card.selected .plan-interest-badge {
+    background: #fff;
+    border-color: var(--teal);
   }
 
   /* ── SUMMARY STRIP ── */
@@ -1122,10 +1134,12 @@ function renderPlans() {
     const monthly = total / p.n;
     const div = document.createElement('div');
     div.className = 'plan-card' + (selectedPlan === i ? ' selected' : '');
+    const monthlyInterest = (fee * p.rate / 100) / p.n;
     div.innerHTML = `
       <div class="plan-tenure">${p.n} EMIs &middot; ${p.rate}%</div>
       <div class="plan-emi">${fmt(monthly)}<span>/mo</span></div>
-      <div class="plan-rate">Total ${fmt(total)}</div>`;
+      <div class="plan-rate">Total ${fmt(total)}</div>
+      <div class="plan-interest-badge">💡 Monthly interest as low as ${fmt(monthlyInterest)}</div>`;
     div.addEventListener('click', () => {
       selectedPlan = i;
       renderPlans();
