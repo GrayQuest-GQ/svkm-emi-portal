@@ -3,1216 +3,817 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>GrayQuest Fee Financing — SVKM</title>
+<title>GrayQuest — SVKM Fee Financing Hub</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap" rel="stylesheet" />
 <style>
-  /* ── RESET & BASE ── */
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: #F4F3EF;
-    color: #1A1A2E;
-    min-height: 100vh;
-    -webkit-font-smoothing: antialiased;
-  }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #F0EDE6;
+  color: #0D1B35;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
 
-  /* ── TOKENS ── */
-  :root {
-    --navy:    #0D1B2A;
-    --navy-2:  #162436;
-    --teal:    #0E9B78;
-    --teal-lt: #E6F7F2;
-    --teal-md: #B2E8D8;
-    --amber:   #C97B1A;
-    --amber-lt:#FEF3E2;
-    --blue:    #1966CC;
-    --blue-lt: #E8F0FD;
-    --cream:   #F4F3EF;
-    --white:   #FFFFFF;
-    --text-1:  #0D1B2A;
-    --text-2:  #4A5568;
-    --text-3:  #8896AB;
-    --border:  rgba(13,27,42,0.10);
-    --border-2:rgba(13,27,42,0.18);
-    --shadow-sm: 0 1px 3px rgba(13,27,42,0.08), 0 1px 2px rgba(13,27,42,0.04);
-    --shadow-md: 0 4px 16px rgba(13,27,42,0.10), 0 2px 6px rgba(13,27,42,0.06);
-    --shadow-lg: 0 12px 40px rgba(13,27,42,0.14), 0 4px 12px rgba(13,27,42,0.08);
-    --radius-sm: 8px;
-    --radius-md: 12px;
-    --radius-lg: 18px;
-    --radius-xl: 24px;
-  }
+:root {
+  --navy:      #0D1B35;
+  --navy-2:    #162644;
+  --navy-3:    #1E3357;
+  --gold:      #C9A84C;
+  --gold-lt:   #FBF5E6;
+  --gold-md:   #E8D5A0;
+  --gold-dk:   #A8873A;
+  --teal:      #0C9B78;
+  --teal-lt:   #E5F5F0;
+  --teal-md:   #A7DDD0;
+  --blue:      #1760C8;
+  --blue-lt:   #EAF1FC;
+  --cream:     #F0EDE6;
+  --white:     #FFFFFF;
+  --t1:        #0D1B35;
+  --t2:        #3D4E66;
+  --t3:        #8A99B0;
+  --border:    rgba(13,27,53,0.10);
+  --border-2:  rgba(13,27,53,0.20);
+  --sh-sm:     0 1px 4px rgba(13,27,53,0.08);
+  --sh-md:     0 4px 18px rgba(13,27,53,0.12);
+  --sh-lg:     0 12px 40px rgba(13,27,53,0.16);
+  --r-sm: 8px; --r-md: 14px; --r-lg: 20px; --r-xl: 26px;
+}
 
-  /* ── LAYOUT ── */
-  .page-wrap {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 0 20px 60px;
-  }
+/* ── PAGE WRAP ── */
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 18px 56px; }
 
-  /* ── HERO HEADER ── */
-  .hero {
-    background: var(--navy);
-    position: relative;
-    overflow: hidden;
-    padding: 48px 20px 44px;
-    margin-bottom: 0;
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-      radial-gradient(circle at 20% 50%, rgba(14,155,120,0.18) 0%, transparent 55%),
-      radial-gradient(circle at 80% 20%, rgba(25,102,204,0.14) 0%, transparent 45%);
-  }
-  .hero-pattern {
-    position: absolute;
-    inset: 0;
-    opacity: 0.04;
-    background-image: repeating-linear-gradient(
-      45deg,
-      #fff 0, #fff 1px,
-      transparent 0, transparent 50%
-    );
-    background-size: 20px 20px;
-  }
-  .hero-inner {
-    position: relative;
-    z-index: 1;
-    max-width: 720px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-  .hero-logo {
-    width: 52px;
-    height: 52px;
-    border-radius: 14px;
-    background: rgba(14,155,120,0.22);
-    border: 1px solid rgba(14,155,120,0.35);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-  .hero-logo svg { width: 26px; height: 26px; }
-  .hero-text { flex: 1; }
-  .hero-title {
-    font-family: 'Sora', sans-serif;
-    font-size: 22px;
-    font-weight: 700;
-    color: #FFFFFF;
-    letter-spacing: -0.3px;
-    line-height: 1.2;
-  }
-  .hero-sub {
-    font-size: 13px;
-    color: rgba(255,255,255,0.55);
-    margin-top: 3px;
-    font-weight: 400;
-  }
-  .hero-badge {
-    font-size: 11px;
-    font-weight: 500;
-    padding: 5px 12px;
-    border-radius: 20px;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.14);
-    color: rgba(255,255,255,0.65);
-    white-space: nowrap;
-    letter-spacing: 0.02em;
-  }
+/* ── HERO ── */
+.hero {
+  background: linear-gradient(135deg, #0A1628 0%, #0D1B35 40%, #142040 70%, #0F2248 100%);
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 80% 50%, rgba(201,168,76,0.08) 0%, transparent 55%),
+    radial-gradient(ellipse at 10% 80%, rgba(23,96,200,0.12) 0%, transparent 50%);
+}
+.hero-topbar {
+  position: relative; z-index: 2;
+  display: flex; align-items: center; gap: 12px;
+  padding: 16px 28px;
+  border-bottom: 1px solid var(--gold);
+  max-width: 100%;
+}
+.hero-logo {
+  width: 38px; height: 38px; border-radius: 9px;
+  background: var(--gold);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.hero-logo-text {
+  font-family: 'Sora', sans-serif;
+  font-size: 13px; font-weight: 800;
+  color: var(--navy);
+}
+.hero-brand {
+  display: flex; flex-direction: column; gap: 1px;
+}
+.hero-brand-name {
+  font-family: 'Sora', sans-serif;
+  font-size: 13px; font-weight: 600;
+  color: #FFFFFF;
+}
+.hero-brand-name span { color: var(--gold); }
+.hero-name {
+  font-family: 'Sora', sans-serif;
+  font-size: 10px; font-weight: 600;
+  color: rgba(255,255,255,0.40);
+  letter-spacing: 0.1em; text-transform: uppercase;
+}
+.hero-badge-wrap { margin-left: auto; }
+.hero-badge {
+  font-size: 11px; font-weight: 500;
+  padding: 4px 11px; border-radius: 20px;
+  background: rgba(201,168,76,0.12);
+  border: 1px solid rgba(201,168,76,0.30);
+  color: var(--gold);
+  letter-spacing: 0.03em;
+}
+.hero-body {
+  position: relative; z-index: 1;
+  max-width: 680px; margin: 0 auto;
+  padding: 48px 28px 52px;
+  display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px;
+}
+.hero-dots {
+  position: absolute; inset: 0; opacity: 0.03;
+  background-image: radial-gradient(circle, #fff 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.hero-tagline {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(201,168,76,0.30);
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 11px; font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.06em; text-transform: uppercase;
+}
+.hero-tagline .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+.hero-title {
+  font-family: 'Sora', sans-serif;
+  font-size: 40px; font-weight: 800;
+  color: #FFFFFF;
+  letter-spacing: -0.8px; line-height: 1.1;
+}
+.hero-title span { color: var(--gold); }
+.hero-sub {
+  font-size: 15px; color: rgba(255,255,255,0.45);
+  line-height: 1.6; max-width: 400px;
+}
 
-  /* ── SCREEN TRANSITIONS ── */
-  .screen {
-    display: none;
-    animation: fadeUp 0.3s ease both;
-  }
-  .screen.active { display: block; }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(14px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
+/* ── SECTION LABEL ── */
+.sec-label {
+  font-family: 'Sora', sans-serif;
+  font-size: 10px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--gold-dk); margin-bottom: 12px;
+}
 
-  /* ── SECTION LABEL ── */
-  .section-label {
-    font-family: 'Sora', sans-serif;
-    font-size: 10px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--text-3);
-    margin-bottom: 14px;
-  }
+/* ── ANIMATE IN ── */
+.fade-up {
+  animation: fadeUp 0.45s ease both;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up:nth-child(1) { animation-delay: 0.05s; }
+.fade-up:nth-child(2) { animation-delay: 0.12s; }
+.fade-up:nth-child(3) { animation-delay: 0.19s; }
+.fade-up:nth-child(4) { animation-delay: 0.26s; }
+.fade-up:nth-child(5) { animation-delay: 0.33s; }
 
-  /* ── ROLE SELECTION ── */
-  .role-section { padding: 36px 0 0; }
-  .role-intro {
-    text-align: center;
-    margin-bottom: 28px;
-  }
-  .role-intro h2 {
-    font-family: 'Sora', sans-serif;
-    font-size: 26px;
-    font-weight: 700;
-    color: var(--text-1);
-    letter-spacing: -0.4px;
-    margin-bottom: 8px;
-  }
-  .role-intro p {
-    font-size: 15px;
-    color: var(--text-2);
-    line-height: 1.6;
-  }
-  .role-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-  .role-card {
-    background: var(--white);
-    border: 1.5px solid var(--border);
-    border-radius: var(--radius-xl);
-    padding: 28px 22px 24px;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-    box-shadow: var(--shadow-sm);
-    position: relative;
-    overflow: hidden;
-  }
-  .role-card::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 3px;
-    opacity: 0;
-    transition: opacity 0.2s ease;
-  }
-  .role-card.rc-student::after { background: var(--teal); }
-  .role-card.rc-exec::after   { background: var(--blue); }
-  .role-card:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-lg);
-    border-color: var(--border-2);
-  }
-  .role-card:hover::after { opacity: 1; }
-  .role-card:active { transform: translateY(-1px); }
-  .role-icon-wrap {
-    width: 50px;
-    height: 50px;
-    border-radius: var(--radius-md);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .ri-teal { background: var(--teal-lt); }
-  .ri-blue { background: var(--blue-lt); }
-  .ri-teal svg { color: var(--teal); }
-  .ri-blue svg { color: var(--blue); }
-  .role-card-name {
-    font-family: 'Sora', sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--text-1);
-    line-height: 1.3;
-  }
-  .role-card-desc {
-    font-size: 13px;
-    color: var(--text-2);
-    line-height: 1.6;
-    flex: 1;
-  }
-  .role-card-cta {
-    font-size: 13px;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    margin-top: 4px;
-  }
-  .rc-student .role-card-cta { color: var(--teal); }
-  .rc-exec    .role-card-cta { color: var(--blue); }
-  .role-card-cta svg { transition: transform 0.2s; }
-  .role-card:hover .role-card-cta svg { transform: translateX(3px); }
+/* ── SECTION BLOCK ── */
+.section { margin-top: 28px; }
 
-  /* ── EMAIL SCREEN ── */
-  .email-section {
-    padding: 40px 0 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .email-card {
-    background: var(--white);
-    border: 1.5px solid var(--border);
-    border-radius: var(--radius-xl);
-    padding: 40px 36px;
-    width: 100%;
-    max-width: 460px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 14px;
-    text-align: center;
-    box-shadow: var(--shadow-md);
-  }
-  .email-icon-wrap {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: var(--blue-lt);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 4px;
-  }
-  .email-icon-wrap svg { color: var(--blue); width: 26px; height: 26px; }
-  .email-card h3 {
-    font-family: 'Sora', sans-serif;
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--text-1);
-    letter-spacing: -0.3px;
-  }
-  .email-card p {
-    font-size: 14px;
-    color: var(--text-2);
-    line-height: 1.6;
-    max-width: 300px;
-  }
-  .email-field-wrap {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 6px;
-  }
-  .email-input {
-    width: 100%;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
-    border: 1.5px solid var(--border-2);
-    border-radius: var(--radius-sm);
-    padding: 12px 16px;
-    background: var(--cream);
-    color: var(--text-1);
-    outline: none;
-    transition: border-color 0.15s;
-  }
-  .email-input:focus { border-color: var(--blue); background: var(--white); }
-  .email-input.err   { border-color: #E53E3E; }
-  .email-btn {
-    width: 100%;
-    font-family: 'Sora', sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    padding: 13px;
-    border-radius: var(--radius-sm);
-    border: none;
-    background: var(--navy);
-    color: #fff;
-    cursor: pointer;
-    transition: background 0.15s, transform 0.1s;
-    letter-spacing: 0.02em;
-  }
-  .email-btn:hover  { background: var(--navy-2); }
-  .email-btn:active { transform: scale(0.98); }
-  .email-error {
-    font-size: 13px;
-    color: #C53030;
-    display: none;
-    align-items: center;
-    gap: 5px;
-    width: 100%;
-    text-align: left;
-  }
-  .email-error.show { display: flex; }
-  .back-link {
-    margin-top: 20px;
-    font-size: 13px;
-    color: var(--text-3);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    transition: color 0.15s;
-  }
-  .back-link:hover { color: var(--text-2); }
+/* ── CARD BASE ── */
+.card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-xl);
+  box-shadow: var(--sh-sm);
+}
 
-  /* ── CONTENT SCREENS ── */
-  .content-top {
-    padding: 28px 0 0;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 28px;
-  }
-  .back-btn {
-    background: var(--white);
-    border: 1.5px solid var(--border);
-    border-radius: 20px;
-    padding: 6px 14px 6px 10px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    color: var(--text-2);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    transition: border-color 0.15s, color 0.15s;
-    box-shadow: var(--shadow-sm);
-  }
-  .back-btn:hover { border-color: var(--border-2); color: var(--text-1); }
-  .role-pill {
-    font-size: 12px;
-    font-weight: 500;
-    padding: 5px 12px;
-    border-radius: 20px;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-  }
-  .pill-teal { background: var(--teal-lt); color: #0A7A5E; }
-  .pill-blue { background: var(--blue-lt); color: var(--blue); }
+/* ── PRODUCT CARDS ── */
+.prod-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.prod-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-xl);
+  box-shadow: var(--sh-sm);
+  display: flex; flex-direction: column;
+  overflow: hidden;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.prod-card:hover { box-shadow: var(--sh-lg); transform: translateY(-2px); }
+.prod-top {
+  padding: 22px 20px 18px; flex: 1;
+  display: flex; flex-direction: column; gap: 10px;
+  border-bottom: 1.5px solid var(--border);
+}
+.prod-tag {
+  font-family: 'Sora', sans-serif;
+  font-size: 10px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  padding: 4px 10px; border-radius: 20px;
+  display: inline-flex; align-self: flex-start;
+}
+.tag-teal { background: var(--navy); color: #fff; border: 1px solid var(--navy-3); }
+.tag-blue { background: var(--navy); color: #fff; border: 1px solid var(--navy-3); }
+.prod-icon {
+  width: 48px; height: 48px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center; font-size: 22px;
+}
+.pi-teal  { background: var(--teal-lt); }
+.pi-amber { background: var(--amber-lt); }
+.prod-title {
+  font-family: 'Sora', sans-serif;
+  font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.25;
+}
+.prod-desc { font-size: 13px; color: var(--t2); line-height: 1.65; }
+.prod-features {
+  list-style: none;
+  display: flex; flex-direction: column; gap: 7px; margin-top: 4px;
+}
+.prod-features li {
+  font-size: 12.5px; color: var(--t2);
+  display: flex; align-items: flex-start; gap: 8px; line-height: 1.5;
+}
+.prod-features li::before {
+  content: '✦'; color: var(--gold);
+  font-size: 10px; flex-shrink: 0; margin-top: 3px;
+}
+.prod-actions { padding: 16px 20px; display: flex; flex-direction: column; gap: 9px; }
+.btn-outline {
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 11px 16px; border-radius: var(--r-md);
+  border: 1.5px solid var(--gold-md); background: var(--gold-lt);
+  font-family: 'Sora', sans-serif; font-size: 13px; font-weight: 600;
+  color: var(--navy); text-decoration: none;
+  transition: background 0.15s, border-color 0.15s, transform 0.1s;
+}
+.btn-outline:hover { background: var(--gold-md); border-color: var(--gold); transform: translateY(-1px); }
+.btn-solid {
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 12px 16px; border-radius: var(--r-md);
+  background: var(--navy); font-family: 'Sora', sans-serif;
+  font-size: 13px; font-weight: 600; color: #fff; text-decoration: none;
+  border: 1.5px solid transparent;
+  transition: background 0.15s, transform 0.1s, border-color 0.15s;
+}
+.btn-solid:hover { background: var(--navy-2); border-color: var(--gold); transform: translateY(-1px); }
 
-  /* ── RESOURCE CARDS ── */
-  .res-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 14px;
-    margin-bottom: 36px;
-  }
-  .res-card {
-    background: var(--white);
-    border: 1.5px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 22px 20px;
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-    box-shadow: var(--shadow-sm);
-    position: relative;
-    overflow: hidden;
-  }
-  .res-card::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    width: 3px;
-    border-radius: 3px 0 0 3px;
-  }
-  .rc-green::before { background: var(--teal); }
-  .rc-amber::before { background: var(--amber); }
-  .rc-blue::before  { background: var(--blue); }
-  .res-card:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
-    border-color: var(--border-2);
-  }
-  .res-icon {
-    width: 38px;
-    height: 38px;
-    border-radius: var(--radius-sm);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 2px;
-  }
-  .ri-res-green { background: var(--teal-lt); }
-  .ri-res-green svg { color: var(--teal); }
-  .ri-res-amber { background: var(--amber-lt); }
-  .ri-res-amber svg { color: var(--amber); }
-  .ri-res-blue  { background: var(--blue-lt); }
-  .ri-res-blue  svg { color: var(--blue); }
-  .res-title {
-    font-family: 'Sora', sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text-1);
-    line-height: 1.35;
-  }
-  .res-desc {
-    font-size: 12px;
-    color: var(--text-2);
-    line-height: 1.6;
-    flex: 1;
-  }
-  .res-cta {
-    font-size: 12px;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    margin-top: 4px;
-  }
-  .rc-green .res-cta { color: var(--teal); }
-  .rc-amber .res-cta { color: var(--amber); }
-  .rc-blue  .res-cta { color: var(--blue); }
+/* ── RESOURCE CARDS ── */
+.res-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.res-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 20px 18px;
+  text-decoration: none;
+  display: flex; flex-direction: column; gap: 7px;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  box-shadow: var(--sh-sm);
+  position: relative; overflow: hidden;
+}
+.res-card::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 3.5px; border-radius: 3px 0 0 3px;
+}
+.rc-teal::before  { background: var(--teal); }
+.rc-amber::before { background: var(--amber); }
+.rc-blue::before  { background: var(--blue); }
+.rc-navy::before  { background: var(--navy); }
+.res-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--sh-lg);
+  border-color: var(--border-2);
+}
+.res-card:active { transform: translateY(-1px); }
+.res-icon {
+  width: 38px; height: 38px; border-radius: var(--r-sm);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 2px; flex-shrink: 0;
+}
+.ri-teal  { background: var(--teal-lt);  } .ri-teal  svg { color: var(--teal); }
+.ri-amber { background: var(--amber-lt); } .ri-amber svg { color: var(--amber); }
+.ri-blue  { background: var(--blue-lt);  } .ri-blue  svg { color: var(--blue); }
+.ri-navy  { background: #E8EDF2;         } .ri-navy  svg { color: var(--navy); }
+.res-title {
+  font-family: 'Sora', sans-serif;
+  font-size: 13px; font-weight: 600;
+  color: var(--t1); line-height: 1.35;
+}
+.res-desc {
+  font-size: 12px; color: var(--t2);
+  line-height: 1.6; flex: 1;
+}
+.res-cta {
+  font-size: 12px; font-weight: 500;
+  display: flex; align-items: center; gap: 4px;
+  margin-top: 4px;
+}
+.rc-teal  .res-cta { color: var(--teal); }
+.rc-amber .res-cta { color: var(--amber); }
+.rc-blue  .res-cta { color: var(--blue); }
+.rc-navy  .res-cta { color: var(--navy); }
 
-  /* ── EMI CALCULATOR ── */
-  .calc-wrap {
-    background: var(--white);
-    border: 1.5px solid var(--border);
-    border-radius: var(--radius-xl);
-    overflow: hidden;
-    box-shadow: var(--shadow-md);
-    margin-bottom: 36px;
-  }
-  .calc-header {
-    background: var(--navy);
-    padding: 18px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .calc-header-title {
-    font-family: 'Sora', sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    color: rgba(255,255,255,0.9);
-  }
-  .calc-header-badge {
-    font-size: 11px;
-    font-weight: 500;
-    padding: 4px 10px;
-    border-radius: 20px;
-    background: rgba(14,155,120,0.25);
-    border: 1px solid rgba(14,155,120,0.4);
-    color: #5DDCB4;
-  }
-  .calc-body { padding: 24px; }
-  .fee-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 24px;
-    background: var(--cream);
-    border: 1.5px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: 4px 16px 4px 4px;
-    transition: border-color 0.15s;
-  }
-  .fee-row:focus-within { border-color: var(--teal); }
-  .fee-prefix {
-    width: 44px;
-    height: 44px;
-    background: var(--teal-lt);
-    border-radius: var(--radius-sm);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Sora', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--teal);
-    flex-shrink: 0;
-  }
-  .fee-label {
-    font-size: 12px;
-    color: var(--text-3);
-    white-space: nowrap;
-  }
-  .fee-input {
-    flex: 1;
-    font-family: 'Sora', sans-serif;
-    font-size: 20px;
-    font-weight: 600;
-    border: none;
-    background: transparent;
-    color: var(--text-1);
-    outline: none;
-    min-width: 0;
-  }
-  .plans-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-  }
-  .plan-card {
-    border: 1.5px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: 14px 12px;
-    cursor: pointer;
-    transition: border-color 0.15s, background 0.15s, transform 0.1s;
-    background: var(--cream);
-    position: relative;
-  }
-  .plan-card:hover {
-    border-color: var(--teal);
-    background: var(--white);
-    transform: translateY(-1px);
-  }
-  .plan-card.selected {
-    border-color: var(--teal);
-    background: var(--teal-lt);
-  }
-  .plan-card.selected::after {
-    content: '✓';
-    position: absolute;
-    top: 8px; right: 10px;
-    font-size: 11px;
-    color: var(--teal);
-    font-weight: 700;
-  }
-  .plan-tenure {
-    font-family: 'Sora', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--text-2);
-    margin-bottom: 4px;
-  }
-  .plan-emi {
-    font-family: 'Sora', sans-serif;
-    font-size: 17px;
-    font-weight: 700;
-    color: var(--text-1);
-    margin-bottom: 2px;
-    line-height: 1.2;
-  }
-  .plan-emi span {
-    font-size: 11px;
-    font-weight: 400;
-    color: var(--text-3);
-  }
-  .plan-interest-badge {
-    margin-top: 8px;
-    font-size: 11px;
-    font-weight: 500;
-    color: #0A7A5E;
-    background: var(--teal-lt);
-    border: 1px solid var(--teal-md);
-    border-radius: 6px;
-    padding: 4px 8px;
-    display: inline-block;
-    line-height: 1.4;
-  }
-  .plan-card.selected .plan-interest-badge {
-    background: #fff;
-    border-color: var(--teal);
-  }
+/* ── CTA CARD (Request callback) ── */
+.cta-card {
+  background: var(--navy);
+  border-radius: var(--r-xl);
+  padding: 24px 22px;
+  display: flex; align-items: center; gap: 16px;
+  text-decoration: none;
+  position: relative; overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: var(--sh-md);
+}
+.cta-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 80% 50%, rgba(12,155,120,0.20) 0%, transparent 60%);
+}
+.cta-card:hover { transform: translateY(-2px); box-shadow: var(--sh-lg); }
+.cta-icon {
+  width: 48px; height: 48px; border-radius: 14px;
+  background: rgba(12,155,120,0.20);
+  border: 1.5px solid rgba(12,155,120,0.35);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; position: relative; z-index: 1;
+}
+.cta-icon svg { color: #5DDCB4; width: 22px; height: 22px; }
+.cta-body { flex: 1; position: relative; z-index: 1; }
+.cta-title {
+  font-family: 'Sora', sans-serif;
+  font-size: 15px; font-weight: 700;
+  color: #FFFFFF; margin-bottom: 3px;
+}
+.cta-sub { font-size: 12px; color: rgba(255,255,255,0.50); line-height: 1.5; }
+.cta-arrow {
+  position: relative; z-index: 1;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: rgba(255,255,255,0.10);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.cta-arrow svg { color: #fff; }
 
-  /* ── SUMMARY STRIP ── */
-  .summary-strip {
-    display: none;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    margin-top: 20px;
-    padding-top: 20px;
-    border-top: 1.5px solid var(--border);
-  }
-  .summary-strip.show { display: grid; }
-  .sum-item {
-    background: var(--cream);
-    border-radius: var(--radius-sm);
-    padding: 12px;
-    border: 1.5px solid var(--border);
-  }
-  .sum-label { font-size: 10px; color: var(--text-3); font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
-  .sum-val { font-family: 'Sora', sans-serif; font-size: 15px; font-weight: 700; color: var(--text-1); }
-  .sum-sub { font-size: 11px; color: var(--text-3); margin-top: 2px; }
+/* ── EMI CALCULATOR ── */
+.calc-card {
+  background: var(--navy);
+  border-radius: var(--r-xl);
+  box-shadow: var(--sh-lg);
+  overflow: hidden;
+  position: relative;
+}
+.calc-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 80% 20%, rgba(12,155,120,0.15) 0%, transparent 55%);
+  pointer-events: none;
+}
+.calc-body { padding: 32px 28px 28px; position: relative; z-index: 1; }
+.calc-eyebrow {
+  font-family: 'Sora', sans-serif;
+  font-size: 10px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--gold); margin-bottom: 10px;
+}
+.calc-title {
+  font-family: 'Sora', sans-serif;
+  font-size: 26px; font-weight: 700;
+  color: #FFFFFF; letter-spacing: -0.3px;
+  margin-bottom: 24px; line-height: 1.2;
+}
+.calc-field-label {
+  font-family: 'Sora', sans-serif;
+  font-size: 10px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.45); margin-bottom: 10px;
+}
+.fee-wrap {
+  display: flex; align-items: center; gap: 12px;
+  background: rgba(255,255,255,0.07);
+  border: 1.5px solid rgba(255,255,255,0.15);
+  border-radius: var(--r-md);
+  padding: 14px 18px;
+  margin-bottom: 24px;
+  transition: border-color 0.15s;
+}
+.fee-wrap:focus-within { border-color: rgba(201,168,76,0.6); }
+.calc-summary-strip {
+  display: none;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: var(--r-md);
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+.calc-summary-strip.show { display: grid; }
+.css-item {
+  padding: 14px 16px;
+  border-right: 1px solid rgba(255,255,255,0.08);
+}
+.css-item:last-child { border-right: none; }
+.css-lbl { font-size: 10px; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-bottom: 5px; }
+.css-val { font-family: 'Sora', sans-serif; font-size: 18px; font-weight: 700; color: #FFFFFF; line-height: 1.1; }
+.css-val span { font-size: 11px; font-weight: 400; color: rgba(255,255,255,0.40); margin-left: 3px; }
+.plans {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+}
+.plan {
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: var(--r-lg);
+  padding: 22px 18px 18px;
+  cursor: pointer;
+  background: rgba(255,255,255,0.04);
+  transition: border-color 0.15s, background 0.15s, transform 0.15s;
+  position: relative;
+  text-align: center;
+}
+.plan:hover { border-color: rgba(201,168,76,0.5); background: rgba(255,255,255,0.08); transform: translateY(-2px); }
+.plan.sel { border-color: var(--gold); background: rgba(201,168,76,0.08); }
+.plan.popular {
+  border-color: var(--gold);
+  border-width: 2px;
+  background: rgba(201,168,76,0.07);
+  box-shadow: 0 0 0 4px rgba(201,168,76,0.12), 0 8px 24px rgba(201,168,76,0.15);
+}
+.popular-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'Sora', sans-serif;
+  font-size: 10px; font-weight: 700;
+  color: var(--navy);
+  background: var(--gold);
+  border-radius: 6px;
+  padding: 4px 10px;
+  margin-bottom: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.plan-count {
+  font-family: 'Sora', sans-serif;
+  font-size: 42px; font-weight: 800;
+  color: #FFFFFF; line-height: 1;
+  margin-bottom: 3px;
+}
+.plan-count-lbl {
+  font-family: 'Sora', sans-serif;
+  font-size: 10px; font-weight: 600;
+  color: rgba(255,255,255,0.30);
+  text-transform: uppercase; letter-spacing: 0.12em;
+  margin-bottom: 14px;
+}
+.plan-monthly {
+  font-family: 'Sora', sans-serif;
+  font-size: 22px; font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 3px;
+}
+.plan-monthly-lbl {
+  font-size: 11px; color: rgba(255,255,255,0.40);
+  margin-bottom: 14px;
+}
+.plan-divider {
+  height: 1px; background: rgba(255,255,255,0.08);
+  margin-bottom: 12px;
+}
+.plan-detail {
+  font-size: 12px; color: rgba(255,255,255,0.50);
+  margin-bottom: 5px; text-align: left; line-height: 1.4;
+}
+.plan-detail strong { color: rgba(255,255,255,0.80); font-weight: 500; }
+.plan-rate-badge {
+  display: inline-block;
+  margin-top: 14px;
+  font-family: 'Sora', sans-serif;
+  font-size: 12px; font-weight: 600;
+  color: var(--gold);
+  background: rgba(201,168,76,0.12);
+  border: 1px solid rgba(201,168,76,0.30);
+  border-radius: 20px; padding: 5px 14px;
+}
+.hint {
+  font-size: 11px; color: rgba(255,255,255,0.30);
+  display: flex; align-items: center; gap: 4px; margin-top: 16px;
+}
+.hint svg { color: rgba(255,255,255,0.25); }
+.calc-footnote {
+  font-size: 11px; color: rgba(255,255,255,0.25);
+  margin-top: 20px; line-height: 1.6; text-align: center;
+}
+/* hide old summary */
+.summary { display: none !important; }
+.fee-sym {
+  font-family: 'Sora', sans-serif;
+  font-size: 18px; font-weight: 600;
+  color: rgba(255,255,255,0.45); flex-shrink: 0;
+}
+.fee-inp {
+  font-family: 'Sora', sans-serif;
+  font-size: 20px; font-weight: 600;
+  border: none; background: transparent;
+  color: #FFFFFF; outline: none; width: 100%;
+}
+.fee-inp::placeholder { color: rgba(255,255,255,0.25); font-weight: 400; }
+.plans {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+}
+.plan {
+  border: 1.5px solid rgba(255,255,255,0.12);
+  border-radius: var(--r-md); padding: 13px 11px;
+  cursor: pointer; background: rgba(255,255,255,0.05);
+  transition: border-color 0.15s, background 0.15s, transform 0.1s;
+  position: relative;
+}
+.plan:hover { border-color: rgba(93,220,180,0.5); background: rgba(255,255,255,0.09); transform: translateY(-1px); }
+.plan.sel { border-color: #5DDCB4; background: rgba(12,155,120,0.18); }
+.plan.sel::after {
+  content: '✓'; position: absolute; top: 7px; right: 9px;
+  font-size: 10px; font-weight: 700; color: #5DDCB4;
+}
+.plan.popular { border-color: var(--gold); }
+.popular-tag {
+  font-size: 10px; font-weight: 600;
+  color: var(--gold-dk);
+  background: rgba(201,168,76,0.15);
+  border: 1px solid rgba(201,168,76,0.40);
+  border-radius: 5px; padding: 3px 7px;
+  display: inline-block; margin-bottom: 6px;
+  letter-spacing: 0.02em;
+}
+.plan-n { font-family: 'Sora', sans-serif; font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.45); margin-bottom: 3px; }
+.plan-emi { font-family: 'Sora', sans-serif; font-size: 15px; font-weight: 700; color: #FFFFFF; margin-bottom: 2px; }
+.plan-emi sub { font-size: 10px; font-weight: 400; color: rgba(255,255,255,0.40); }
+.plan-tot { font-size: 11px; color: rgba(255,255,255,0.35); margin-bottom: 7px; }
+.plan-badge {
+  font-size: 10px; font-weight: 500; color: #5DDCB4;
+  background: rgba(12,155,120,0.20); border: 1px solid rgba(12,155,120,0.35);
+  border-radius: 5px; padding: 3px 6px; display: inline-block; line-height: 1.4;
+}
+.hint {
+  font-size: 11px; color: rgba(255,255,255,0.30);
+  display: flex; align-items: center; gap: 4px; margin-top: 12px;
+}
+.hint svg { color: rgba(255,255,255,0.25); }
+.summary {
+  display: none; grid-template-columns: repeat(4, 1fr); gap: 10px;
+  margin-top: 18px; padding-top: 18px;
+  border-top: 1px solid rgba(255,255,255,0.10);
+}
+.summary.show { display: grid; }
+.sum-item {
+  background: rgba(255,255,255,0.06); border-radius: var(--r-sm);
+  padding: 11px; border: 1px solid rgba(255,255,255,0.10);
+}
+.sum-lbl { font-size: 10px; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 500; margin-bottom: 3px; }
+.sum-val { font-family: 'Sora', sans-serif; font-size: 13px; font-weight: 700; color: #FFFFFF; }
+.sum-sub { font-size: 10px; color: rgba(255,255,255,0.30); margin-top: 2px; }
 
-  /* ── RATE HINT ── */
-  .rate-hint {
-    font-size: 11px;
-    color: var(--text-3);
-    margin-top: 14px;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
+/* ── HELPDESK ── */
+.hd-section {
+  padding: 36px 0 0;
+}
+.hd-eyebrow {
+  font-family: 'Sora', sans-serif;
+  font-size: 10px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--gold-dk); margin-bottom: 10px;
+}
+.hd-title {
+  font-family: 'Sora', sans-serif;
+  font-size: 34px; font-weight: 800;
+  color: var(--navy); letter-spacing: -0.6px;
+  margin-bottom: 24px; line-height: 1.1;
+}
+.hd-cards {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+}
+.hd-card {
+  background: var(--white);
+  border: 1.5px solid var(--gold-md);
+  border-radius: var(--r-xl);
+  padding: 26px 22px;
+  display: flex; flex-direction: column; gap: 8px;
+  box-shadow: 0 4px 20px rgba(13,27,53,0.07);
+  transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+  position: relative; overflow: hidden;
+}
+.hd-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-dk));
+}
+.hd-card:hover {
+  box-shadow: 0 8px 32px rgba(13,27,53,0.13);
+  transform: translateY(-3px);
+  border-color: var(--gold);
+}
+.hd-card-icon {
+  font-size: 26px;
+  width: 52px; height: 52px;
+  background: var(--gold-lt);
+  border: 1.5px solid var(--gold-md);
+  border-radius: var(--r-md);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 8px;
+}
+.hd-card-type {
+  font-family: 'Sora', sans-serif;
+  font-size: 14px; font-weight: 700; color: var(--navy);
+  line-height: 1.3;
+}
+.hd-card-subdesc {
+  font-size: 12px; color: var(--t3);
+  line-height: 1.55;
+}
+.hd-card-detail {
+  font-size: 13px; font-weight: 500;
+}
+.hd-card-detail a {
+  color: var(--t2); text-decoration: none;
+  transition: color 0.15s;
+}
+.hd-card-detail a:hover { color: var(--navy); text-decoration: underline; }
 
-  /* ── PROCESS STEPS ── */
-  .steps-wrap {
-    background: var(--white);
-    border: 1.5px solid var(--border);
-    border-radius: var(--radius-xl);
-    overflow: hidden;
-    box-shadow: var(--shadow-sm);
-  }
-  .steps-header {
-    padding: 18px 24px;
-    border-bottom: 1.5px solid var(--border);
-  }
-  .steps-header h3 {
-    font-family: 'Sora', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--text-1);
-  }
-  .step-item {
-    display: flex;
-    gap: 16px;
-    padding: 18px 24px;
-    border-bottom: 1.5px solid var(--border);
-    position: relative;
-  }
-  .step-item:last-child { border-bottom: none; }
-  .step-num {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background: var(--navy);
-    color: #fff;
-    font-family: 'Sora', sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    margin-top: 1px;
-  }
-  .step-body-title {
-    font-family: 'Sora', sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text-1);
-    margin-bottom: 4px;
-  }
-  .step-body-desc {
-    font-size: 13px;
-    color: var(--text-2);
-    line-height: 1.6;
-  }
+/* ── FOOTER ── */
+.footer {
+  text-align: center;
+  font-size: 12px; color: var(--t3);
+  margin-top: 32px; line-height: 1.8;
+}
+.footer strong { color: var(--t2); font-weight: 500; }
 
-  /* ── IMPORTANT INSTRUCTIONS ── */
-  .instructions-wrap {
-    background: var(--white);
-    border: 1.5px solid #F5C842;
-    border-radius: var(--radius-xl);
-    overflow: hidden;
-    box-shadow: 0 4px 16px rgba(201,123,26,0.10);
-    margin-bottom: 28px;
-  }
-  .instructions-header {
-    background: #FFFBEB;
-    border-bottom: 1.5px solid #F5C842;
-    padding: 16px 22px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .instructions-header-icon {
-    width: 36px;
-    height: 36px;
-    border-radius: var(--radius-sm);
-    background: #FEF3C7;
-    border: 1px solid #F5C842;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-  .instructions-header-icon svg { color: #B45309; }
-  .instructions-header-title {
-    font-family: 'Sora', sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    color: #92400E;
-  }
-  .instructions-header-sub {
-    font-size: 12px;
-    color: #B45309;
-    margin-top: 2px;
-  }
-  .instructions-list { padding: 8px 0; }
-  .instruction-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    padding: 16px 22px;
-    border-bottom: 1px solid #FEF3C7;
-    transition: background 0.15s;
-  }
-  .instruction-item:last-child { border-bottom: none; }
-  .instruction-item:hover { background: #FFFBEB; }
-  .instruction-item.critical { background: #FFF7F7; border-bottom-color: #FED7D7; }
-  .instruction-item.critical:hover { background: #FFF0F0; }
-  .instruction-num {
-    font-family: 'Sora', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    color: #B45309;
-    background: #FEF3C7;
-    border: 1px solid #F5C842;
-    border-radius: 6px;
-    padding: 3px 7px;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-  .instruction-item.critical .instruction-num {
-    background: #FED7D7;
-    border-color: #FC8181;
-    color: #C53030;
-  }
-  .instruction-body { flex: 1; }
-  .instruction-title {
-    font-family: 'Sora', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--text-1);
-    margin-bottom: 4px;
-  }
-  .instruction-desc {
-    font-size: 12px;
-    color: var(--text-2);
-    line-height: 1.6;
-  }
-  .instruction-tag {
-    font-size: 10px;
-    font-weight: 600;
-    padding: 3px 9px;
-    border-radius: 20px;
-    background: #FEF3C7;
-    color: #B45309;
-    border: 1px solid #F5C842;
-    white-space: nowrap;
-    flex-shrink: 0;
-    margin-top: 2px;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-  }
-  .instruction-tag.tag-critical {
-    background: #FED7D7;
-    color: #C53030;
-    border-color: #FC8181;
-  }
-
-  /* ── HELPDESK ── */
-  .helpdesk {
-    background: var(--white);
-    border: 1.5px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 20px 22px;
-    margin-top: 28px;
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    box-shadow: var(--shadow-sm);
-  }
-  .helpdesk-icon {
-    width: 38px;
-    height: 38px;
-    border-radius: var(--radius-sm);
-    background: var(--teal-lt);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-  .helpdesk-icon svg { color: var(--teal); }
-  .helpdesk-label {
-    font-family: 'Sora', sans-serif;
-    font-size: 10px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--text-3);
-    margin-bottom: 8px;
-  }
-  .helpdesk-contacts { display: flex; flex-direction: column; gap: 5px; }
-  .helpdesk-row {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    font-size: 13px;
-    color: var(--text-2);
-  }
-  .helpdesk-row svg { color: var(--text-3); flex-shrink: 0; }
-  .helpdesk-row a {
-    color: var(--teal);
-    text-decoration: none;
-    font-weight: 500;
-  }
-  .helpdesk-row a:hover { text-decoration: underline; }
-
-  /* ── FOOTER ── */
-  .footer {
-    text-align: center;
-    padding: 32px 0 0;
-    font-size: 12px;
-    color: var(--text-3);
-    line-height: 1.6;
-  }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 520px) {
-    .hero-title { font-size: 18px; }
-    .hero-badge { display: none; }
-    .role-grid  { grid-template-columns: 1fr; }
-    .plans-grid { grid-template-columns: repeat(2, 1fr); }
-    .summary-strip { grid-template-columns: repeat(2, 1fr); }
-    .email-card { padding: 28px 20px; }
-    .res-grid { grid-template-columns: 1fr; }
-  }
+/* ── RESPONSIVE ── */
+@media (max-width: 500px) {
+  .hero-title { font-size: 26px; }
+  .hero-topbar { padding: 12px 18px; }
+  .hero-body { padding: 32px 18px 36px; }
+  .prod-grid { grid-template-columns: 1fr; }
+  .prod-title { font-size: 16px; }
+  .plans { grid-template-columns: repeat(2, 1fr); }
+  .calc-summary-strip { grid-template-columns: repeat(2, 1fr); }
+  .hd-cards { grid-template-columns: 1fr; }
+  .calc-title { font-size: 20px; }
+}
 </style>
 </head>
 <body>
 
 <!-- ── HERO ── -->
 <div class="hero">
-  <div class="hero-pattern"></div>
-  <div class="hero-inner">
+  <div class="hero-dots"></div>
+  <div class="hero-topbar">
     <div class="hero-logo">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#5DDCB4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="2" y="5" width="20" height="14" rx="3"/>
-        <path d="M2 10h20"/>
-        <path d="M7 15h2M11 15h4"/>
-      </svg>
+      <div class="hero-logo-text">GQ</div>
     </div>
-    <div class="hero-text">
-      <div class="hero-title">GrayQuest Fee Financing</div>
-      <div class="hero-sub">Short term EMIs &amp; Long term Loans</div>
+    <div class="hero-brand">
+      <div class="hero-brand-name">GrayQuest <span>Fee Financing</span></div>
+      <div class="hero-name">SVKM / NMIMS</div>
     </div>
-    <div class="hero-badge">AY 2026–27</div>
+    <div class="hero-badge-wrap">
+      <span class="hero-badge">AY 2026–27</span>
+    </div>
+  </div>
+  <div class="hero-body">
+    <div class="hero-tagline">
+      <span class="dot"></span>
+      Making Fee Payments Flexible &amp; Effortless for Families
+    </div>
+    <div class="hero-title">GrayQuest <span>Fee Financing</span></div>
+    <div class="hero-sub">Short Term EMIs &amp; Long Term Loans</div>
   </div>
 </div>
 
-<div class="page-wrap">
+<div class="wrap">
 
-  <!-- ══════════════════════════════
-       SCREEN 1 — ROLE SELECTION
-  ══════════════════════════════ -->
-  <div id="screen-role" class="screen active">
-    <div class="role-section">
-      <div class="role-intro">
-        <h2>Welcome. Who are you?</h2>
-        <p>Select your role to access the right resources.</p>
-      </div>
-      <div class="role-grid">
+  <!-- ── PRODUCT CARDS ── -->
+  <div class="section fade-up">
+    <div class="sec-label">Fee Financing Options</div>
+    <div class="prod-grid">
 
-        <div class="role-card rc-student" onclick="go('student')">
-          <div class="role-icon-wrap ri-teal">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-              <circle cx="9" cy="7" r="4"/>
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-            </svg>
-          </div>
-          <div class="role-card-name">Parent / Student</div>
-          <div class="role-card-desc">Access user guides to understand your EMI and education loan options before applying.</div>
-          <div class="role-card-cta">
-            View resources
+      <!-- SHORT TERM -->
+      <div class="prod-card">
+        <div class="prod-top">
+          <span class="prod-tag tag-teal">Short-Term EMI</span>
+          <div class="prod-icon pi-teal">⚡</div>
+          <div class="prod-title">Short Term EMIs</div>
+          <div class="prod-desc">Flexible, non-collateral short-term EMI plans designed to split your semester or annual fee into easy monthly instalments — hassle-free.</div>
+          <ul class="prod-features">
+            <li>Split fee into manageable monthly payments</li>
+            <li>Non-collateral — no security required</li>
+            <li>Quick 5-min digital process</li>
+            <li>Applicable for Tuition &amp; Hostel fees</li>
+            <li>NO Paperwork &amp; NO Processing fee</li>
+          </ul>
+        </div>
+        <div class="prod-actions">
+          <a class="btn-outline" href="https://drive.google.com/drive/folders/1JmVckhFTAU7LXSIOvwV374hqMb_6UXqE?usp=sharing" target="_blank">
+            Open User Guide
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </div>
+          </a>
+          <a class="btn-solid" href="https://customer.grayquest.com" target="_blank">
+            Apply Now
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
         </div>
+      </div>
 
-        <div class="role-card rc-exec" onclick="go('email')">
-          <div class="role-icon-wrap ri-blue">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 18v-6a9 9 0 0 1 18 0v6"/>
-              <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
-            </svg>
-          </div>
-          <div class="role-card-name">GQ IS Executive</div>
-          <div class="role-card-desc">Access all resources and the calculator to assist and guide the customers effectively.</div>
-          <div class="role-card-cta">
-            Sign in
+      <!-- LONG TERM -->
+      <div class="prod-card">
+        <div class="prod-top">
+          <span class="prod-tag tag-blue">Long-Term Loan</span>
+          <div class="prod-icon pi-amber">🏦</div>
+          <div class="prod-title">Long Term Education Loans</div>
+          <div class="prod-desc">Comprehensive education loan solutions covering full programme fees with flexible repayment tenures, enabling students to focus on studies without financial stress.</div>
+          <ul class="prod-features">
+            <li>Guaranteed loan facilitation from one of our trusted partners</li>
+            <li>Loan Tenure up to 15 years (including moratorium period)</li>
+            <li>Moratorium options for reduced financial burden during study</li>
+            <li>Fully digital application process</li>
+            <li>Flexible repayment plans based on student and co-applicant income</li>
+          </ul>
+        </div>
+        <div class="prod-actions">
+          <a class="btn-outline" href="https://drive.google.com/drive/folders/1JmVckhFTAU7LXSIOvwV374hqMb_6UXqE?usp=sharing" target="_blank">
+            Open User Guide
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </div>
+          </a>
+          <a class="btn-solid" href="https://form.typeform.com/to/tGwebCK7" target="_blank">
+            Request a Call Back
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
         </div>
+      </div>
 
-      </div>
-    </div>
-    <div class="helpdesk">
-      <div class="helpdesk-icon">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      </div>
-      <div>
-        <div class="helpdesk-label">GrayQuest Helpdesk</div>
-        <div class="helpdesk-contacts">
-          <div class="helpdesk-row">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            <a href="tel:+918355895732">+91-83558 95732</a> &nbsp;/&nbsp; <a href="tel:+919324507084">+91-93245 07084</a>
-          </div>
-          <div class="helpdesk-row">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            <a href="mailto:svkm.support@grayquest.com">svkm.support@grayquest.com</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- ══════════════════════════════
-       SCREEN 2 — EMAIL VERIFICATION
-  ══════════════════════════════ -->
-  <div id="screen-email" class="screen">
-    <div class="email-section">
-      <div class="email-card">
-        <div class="email-icon-wrap">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-            <polyline points="22,6 12,13 2,6"/>
-          </svg>
-        </div>
-        <h3>Sign in with your work email</h3>
-        <p>Enter your company email address to access the IS Executive view.</p>
-        <div class="email-field-wrap">
-          <input class="email-input" type="email" id="emailInput" placeholder="you@company.com" autocomplete="off" />
-          <div class="email-error" id="emailError">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-            <span id="emailErrorText"></span>
-          </div>
-          <button class="email-btn" onclick="verifyEmail()">Continue →</button>
-        </div>
-      </div>
-      <div class="back-link" onclick="go('role')">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        Back to role selection
-      </div>
-      <div class="helpdesk" style="width:100%;max-width:460px">
-        <div class="helpdesk-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        </div>
-        <div>
-          <div class="helpdesk-label">GrayQuest Helpdesk</div>
-          <div class="helpdesk-contacts">
-            <div class="helpdesk-row">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              <a href="tel:+918355895732">+91-83558 95732</a> &nbsp;/&nbsp; <a href="tel:+919324507084">+91-93245 07084</a>
-            </div>
-            <div class="helpdesk-row">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              <a href="mailto:svkm.support@grayquest.com">svkm.support@grayquest.com</a>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 
-  <!-- ══════════════════════════════
-       SCREEN 3 — PARENT / STUDENT
-  ══════════════════════════════ -->
-  <div id="screen-student" class="screen">
-    <div class="content-top">
-      <button class="back-btn" onclick="go('role')">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        Back
-      </button>
-      <span class="role-pill pill-teal">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
-        Parent / Student
-      </span>
-    </div>
-
-    <div class="section-label">Resources</div>
-    <div class="res-grid">
-
-      <a class="res-card rc-green" href="https://drive.google.com/drive/folders/1JmVckhFTAU7LXSIOvwV374hqMb_6UXqE?usp=sharing" target="_blank">
-        <div class="res-icon ri-res-green">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-        </div>
-        <div class="res-title">Short-Term EMI Options – User Guide</div>
-        <div class="res-desc">Step-by-step guide covering all short-term EMI plans. Understand your options before applying.</div>
-        <div class="res-cta">
-          Open in Drive
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        </div>
-      </a>
-
-      <a class="res-card rc-amber" href="https://drive.google.com/drive/folders/1JmVckhFTAU7LXSIOvwV374hqMb_6UXqE?usp=sharing" target="_blank">
-        <div class="res-icon ri-res-amber">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-        </div>
-        <div class="res-title">Long-Term Education Loan – User Guide</div>
-        <div class="res-desc">Guidance on long-term education loan options for students who need extended repayment tenures.</div>
-        <div class="res-cta">
-          Open in Drive
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        </div>
-      </a>
-
-    </div>
-
-    <div class="helpdesk">
-      <div class="helpdesk-icon">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      </div>
-      <div>
-        <div class="helpdesk-label">GrayQuest Helpdesk</div>
-        <div class="helpdesk-contacts">
-          <div class="helpdesk-row">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            <a href="tel:+918355895732">+91-83558 95732</a> &nbsp;/&nbsp; <a href="tel:+919324507084">+91-93245 07084</a>
-          </div>
-          <div class="helpdesk-row">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            <a href="mailto:svkm.support@grayquest.com">svkm.support@grayquest.com</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══════════════════════════════
-       SCREEN 4 — IS EXECUTIVE
-  ══════════════════════════════ -->
-  <div id="screen-exec" class="screen">
-    <div class="content-top">
-      <button class="back-btn" onclick="go('role')">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        Back
-      </button>
-      <span class="role-pill pill-blue">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
-        GQ IS Executive &mdash; <span id="execEmail" style="font-weight:400;opacity:0.8"></span>
-      </span>
-    </div>
-
-    <div class="section-label">Resources</div>
-    <div class="res-grid">
-
-      <a class="res-card rc-green" href="https://drive.google.com/drive/folders/1JmVckhFTAU7LXSIOvwV374hqMb_6UXqE?usp=sharing" target="_blank">
-        <div class="res-icon ri-res-green">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-        </div>
-        <div class="res-title">Short-Term EMI Options – User Guide</div>
-        <div class="res-desc">Share with parents and students before the call to help them understand all EMI plans.</div>
-        <div class="res-cta">
-          Open in Drive
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        </div>
-      </a>
-
-      <a class="res-card rc-amber" href="https://drive.google.com/drive/folders/1JmVckhFTAU7LXSIOvwV374hqMb_6UXqE?usp=sharing" target="_blank">
-        <div class="res-icon ri-res-amber">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-        </div>
-        <div class="res-title">Long-Term Education Loan – User Guide</div>
-        <div class="res-desc">For students who need extended repayment beyond short-term plans. Share when relevant.</div>
-        <div class="res-cta">
-          Open in Drive
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        </div>
-      </a>
-
-      <a class="res-card rc-blue" href="https://docs.google.com/spreadsheets/d/1I_OiEfkaJzkTjvzagM0Y7sRWEuC1r9k7IVgGf8jetmo/edit?gid=2045410355#gid=2045410355" target="_blank">
-        <div class="res-icon ri-res-blue">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/></svg>
-        </div>
-        <div class="res-title">Full EMI Calculator</div>
-        <div class="res-desc">Detailed month-by-month breakdown for all EMI plans. Use during calls to guide leads.</div>
-        <div class="res-cta">
-          Open Spreadsheet
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        </div>
-      </a>
-
-    </div>
-
-    <!-- EMI CALCULATOR -->
-    <div class="section-label">Short-Term EMI Calculator</div>
-    <div class="calc-wrap">
-      <div class="calc-header">
-        <div class="calc-header-title">Calculate monthly EMI</div>
-        <div class="calc-header-badge">IS Executive only</div>
-      </div>
+  <!-- ── EMI CALCULATOR ── -->
+  <div class="section fade-up">
+    <div class="calc-card">
       <div class="calc-body">
-        <div class="fee-row">
-          <div class="fee-prefix">₹</div>
-          <div style="flex:1;display:flex;flex-direction:column;gap:1px">
-            <div class="fee-label">Enter fee amount</div>
-            <input class="fee-input" type="text" id="feeAmt" value="1,00,000" inputmode="numeric" autocomplete="off" />
-          </div>
+        <div class="calc-eyebrow">EMI Calculator</div>
+        <div class="calc-title">Calculate Monthly Payments</div>
+        <div class="calc-field-label">Enter Fee Amount</div>
+        <div class="fee-wrap">
+          <span class="fee-sym">₹</span>
+          <input class="fee-inp" type="text" id="feeAmt" placeholder="e.g. 550000" inputmode="numeric" autocomplete="off" />
         </div>
 
-        <!-- ── UPDATE RATES HERE WHEN COMMERCIALS CHANGE ── -->
-        <div class="plans-grid" id="plansGrid"></div>
+        <!-- Summary strip -->
+        <div class="calc-summary-strip" id="calcSummaryStrip">
+          <div class="css-item"><div class="css-lbl">Fee Amount</div><div class="css-val" id="csFee">—</div></div>
+          <div class="css-item"><div class="css-lbl">Plans Available</div><div class="css-val" id="csPlans">—<span>options</span></div></div>
+          <div class="css-item"><div class="css-lbl">Lowest Monthly</div><div class="css-val" id="csLowest">—<span>/mo</span></div></div>
+          <div class="css-item"><div class="css-lbl">Interest From</div><div class="css-val" id="csInterest">—<span>p.a.</span></div></div>
+        </div>
 
-        <div class="rate-hint">
+        <!-- Plan cards -->
+        <div class="plans" id="plansGrid"></div>
+
+        <div class="hint" id="calcHint">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          Click any plan to see the full breakdown below.
+          Tap any plan to highlight it.
         </div>
-
-        <div class="summary-strip" id="summaryStrip">
-          <div class="sum-item"><div class="sum-label">Monthly EMI</div><div class="sum-val" id="sEmi">—</div><div class="sum-sub" id="sEmiSub"></div></div>
-          <div class="sum-item"><div class="sum-label">Total Payable</div><div class="sum-val" id="sTotal">—</div><div class="sum-sub">fee + interest</div></div>
-          <div class="sum-item"><div class="sum-label">Interest</div><div class="sum-val" id="sInt">—</div><div class="sum-sub" id="sIntSub"></div></div>
-          <div class="sum-item"><div class="sum-label">Tenure</div><div class="sum-val" id="sTenure">—</div><div class="sum-sub">months</div></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- IMPORTANT INSTRUCTIONS -->
-    <div class="section-label">Important Instructions</div>
-    <div class="instructions-wrap">
-      <div class="instructions-header">
-        <div class="instructions-header-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-        </div>
-        <div>
-          <div class="instructions-header-title">Must-Follow Before Processing</div>
-          <div class="instructions-header-sub">Non-compliance may lead to application rejection or delays.</div>
-        </div>
-      </div>
-      <div class="instructions-list">
-        <div class="instruction-item">
-          <div class="instruction-num">01</div>
-          <div class="instruction-body">
-            <div class="instruction-title">Enter the Student ID</div>
-            <div class="instruction-desc">Ensure the correct Student ID is mentioned in the Customer Portal while filling the EMI application. Missing or incorrect IDs will cause processing delays.</div>
-          </div>
-          <div class="instruction-tag">Required</div>
-        </div>
-        <div class="instruction-item">
-          <div class="instruction-num">02</div>
-          <div class="instruction-body">
-            <div class="instruction-title">Collect the Fee Structure</div>
-            <div class="instruction-desc">Always collect the official Fee Structure issued by the institute for the respective student. This is used as a mandatory validation document during processing.</div>
-          </div>
-          <div class="instruction-tag">Required</div>
-        </div>
-        <div class="instruction-item critical">
-          <div class="instruction-num">03</div>
-          <div class="instruction-body">
-            <div class="instruction-title">Validate Institute &amp; Location ⚠️</div>
-            <div class="instruction-desc">Before submitting, carefully verify that the correct Institute and Location are selected in the Customer Portal. An incorrect selection may result in the disbursement being processed to the wrong institution — which is difficult to reverse and can cause significant delays.</div>
-          </div>
-          <div class="instruction-tag tag-critical">Critical</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="helpdesk">
-      <div class="helpdesk-icon">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      </div>
-      <div>
-        <div class="helpdesk-label">GrayQuest Helpdesk</div>
-        <div class="helpdesk-contacts">
-          <div class="helpdesk-row">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            <a href="tel:+918355895732">+91-83558 95732</a> &nbsp;/&nbsp; <a href="tel:+919324507084">+91-93245 07084</a>
-          </div>
-          <div class="helpdesk-row">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            <a href="mailto:svkm.support@grayquest.com">svkm.support@grayquest.com</a>
-          </div>
-        </div>
+        <div class="calc-footnote" id="calcFootnote" style="display:none">* Interest rates are indicative. Final amounts subject to GrayQuest approval. All amounts in Indian Rupees (₹).</div>
+        <div class="summary" id="summary"></div>
       </div>
     </div>
   </div>
+
+  <!-- ── HELPDESK ── -->
+  <div class="hd-section fade-up">
+    <div class="hd-eyebrow">Support</div>
+    <div class="hd-title">GrayQuest Helpdesk</div>
+    <div class="hd-cards">
+
+      <div class="hd-card">
+        <div class="hd-card-icon">📞</div>
+        <div class="hd-card-type">General Enquiries</div>
+        <div class="hd-card-detail"><a href="tel:+918355895732">+91-83558 95732</a></div>
+        <div class="hd-card-detail"><a href="tel:+919324507084">+91-93245 07084</a></div>
+      </div>
+
+      <div class="hd-card">
+        <div class="hd-card-icon">⚡</div>
+        <div class="hd-card-type">Short-Term EMI Support</div>
+        <div class="hd-card-detail"><a href="tel:+918355895732">+91-83558 95732</a></div>
+        <div class="hd-card-detail"><a href="mailto:svkm.support@grayquest.com">svkm.support@grayquest.com</a></div>
+      </div>
+
+      <div class="hd-card">
+        <div class="hd-card-icon">🏦</div>
+        <div class="hd-card-type">Long-Term Education Loans</div>
+        <div class="hd-card-subdesc">For education loan applications and assistance</div>
+        <div class="hd-card-detail"><a href="mailto:eduloan.svkm@grayquest.com">eduloan.svkm@grayquest.com</a></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer fade-up">
+    Powered by <strong>GrayQuest</strong> &nbsp;·&nbsp; SVKM Fee Financing &nbsp;·&nbsp; AY 2026–27
+  </div>
+
+</div><!-- /wrap -->
 
 <script>
-/* ══════════════════════════════════════════════════
-   ── UPDATE RATES HERE WHEN COMMERCIALS CHANGE ──
-   Just change the "rate" values below and save.
+/* ══════════════════════════════════════════════
+   UPDATE RATES HERE WHEN COMMERCIALS CHANGE
    n    = number of EMIs
-   rate = total interest % charged on the fee amount
-══════════════════════════════════════════════════ */
+   rate = total interest % on the fee amount
+══════════════════════════════════════════════ */
 const PLANS = [
   { n: 4,  rate: 3.40 },
   { n: 7,  rate: 5.25 },
@@ -1222,47 +823,7 @@ const PLANS = [
   { n: 13, rate: 9.15 },
 ];
 
-/* ── SCREEN NAVIGATION ── */
-let currentScreen = 'role';
-function go(screen) {
-  document.getElementById('screen-' + currentScreen).classList.remove('active');
-  document.getElementById('screen-' + screen).classList.add('active');
-  currentScreen = screen;
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-  if (screen === 'exec') renderPlans();
-}
-
-/* ── EMAIL VERIFICATION ── */
-function verifyEmail() {
-  const val = document.getElementById('emailInput').value.trim().toLowerCase();
-  const errDiv  = document.getElementById('emailError');
-  const errText = document.getElementById('emailErrorText');
-  const inp     = document.getElementById('emailInput');
-  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
-  if (!emailOk) {
-    errText.textContent = 'Please enter a valid email address.';
-    errDiv.classList.add('show');
-    inp.classList.add('err');
-    return;
-  }
-  if (!val.endsWith('@grayquest.com') && !val.endsWith('@grayquest.co')) {
-    errText.textContent = 'We could not verify your access. Please contact your manager.';
-    errDiv.classList.add('show');
-    inp.classList.add('err');
-    return;
-  }
-  errDiv.classList.remove('show');
-  inp.classList.remove('err');
-  document.getElementById('execEmail').textContent = val;
-  go('exec');
-}
-document.getElementById('emailInput').addEventListener('keydown', e => {
-  if (e.key === 'Enter') verifyEmail();
-});
-
-/* ── EMI CALCULATOR ── */
-let selectedPlan = null;
-
+let sel = null;
 function parseAmt(s) { return parseFloat(s.replace(/[^0-9.]/g, '')) || 0; }
 function fmt(n) { return '₹' + Math.round(n).toLocaleString('en-IN'); }
 
@@ -1270,47 +831,62 @@ function renderPlans() {
   const fee  = parseAmt(document.getElementById('feeAmt').value);
   const grid = document.getElementById('plansGrid');
   grid.innerHTML = '';
+
+  // Update summary strip
+  const lowestMonthly = Math.min(...PLANS.map(p => (fee * (1 + p.rate/100)) / p.n));
+  const lowestRate    = Math.min(...PLANS.map(p => p.rate));
+  document.getElementById('csFee').textContent      = fmt(fee);
+  document.getElementById('csPlans').innerHTML      = `${PLANS.length}<span>options</span>`;
+  document.getElementById('csLowest').innerHTML     = `${fmt(lowestMonthly)}<span>/mo</span>`;
+  document.getElementById('csInterest').innerHTML   = `${lowestRate}%<span>p.a.</span>`;
+
   PLANS.forEach((p, i) => {
-    const total   = fee * (1 + p.rate / 100);
-    const monthly = total / p.n;
+    const total      = fee * (1 + p.rate / 100);
+    const monthly    = total / p.n;
+    const interest   = fee * p.rate / 100;
+    const downPay    = monthly; // 1st EMI as down payment
+    const isPopular  = p.n === 12;
     const div = document.createElement('div');
-    div.className = 'plan-card' + (selectedPlan === i ? ' selected' : '');
-    const monthlyInterest = (fee * p.rate / 100) / p.n;
+    div.className = 'plan' + (sel === i ? ' sel' : '') + (isPopular ? ' popular' : '');
     div.innerHTML = `
-      <div class="plan-tenure">${p.n} EMIs &middot; ${p.rate}%</div>
-      <div class="plan-emi">${fmt(monthly)}<span>/mo</span></div>
-      <div class="plan-rate">Total ${fmt(total)}</div>
-      <div class="plan-interest-badge">💡 Monthly interest as low as ${fmt(monthlyInterest)}</div>`;
-    div.addEventListener('click', () => {
-      selectedPlan = i;
-      renderPlans();
-      showSummary(fee, p, total, monthly);
-    });
+      ${isPopular ? '<div class="popular-tag">⭐ Most Preferred</div>' : ''}
+      <div class="plan-count">${p.n}</div>
+      <div class="plan-count-lbl">EMIs</div>
+      <div class="plan-monthly">${fmt(monthly)}</div>
+      <div class="plan-monthly-lbl">per month</div>
+      <div class="plan-divider"></div>
+      <div class="plan-detail">Total Interest: <strong>${fmt(interest)}</strong></div>
+      <div class="plan-detail">Total Amount: <strong>${fmt(total)}</strong></div>
+      <div class="plan-detail">Down-Payment: <strong>${fmt(downPay)}</strong></div>
+      <div class="plan-rate-badge">${p.rate}% interest</div>`;
+    div.addEventListener('click', () => { sel = i; renderPlans(); });
     grid.appendChild(div);
   });
 }
 
-function showSummary(fee, p, total, monthly) {
-  const interest = fee * (p.rate / 100);
-  document.getElementById('sEmi').textContent    = fmt(monthly);
-  document.getElementById('sEmiSub').textContent = `for ${p.n} months`;
-  document.getElementById('sTotal').textContent  = fmt(total);
-  document.getElementById('sInt').textContent    = fmt(interest);
-  document.getElementById('sIntSub').textContent = `${p.rate}% of fee`;
-  document.getElementById('sTenure').textContent = p.n;
-  document.getElementById('summaryStrip').classList.add('show');
-}
+const inp = document.getElementById('feeAmt');
+inp.addEventListener('input', () => {
+  const fee = parseAmt(inp.value);
+  sel = null;
+  if (fee > 0) {
+    document.getElementById('calcSummaryStrip').classList.add('show');
+    document.getElementById('plansGrid').style.display = 'grid';
+    document.getElementById('calcHint').style.display = 'flex';
+    document.getElementById('calcFootnote').style.display = 'block';
+    renderPlans();
+  } else {
+    document.getElementById('calcSummaryStrip').classList.remove('show');
+    document.getElementById('plansGrid').style.display = 'none';
+    document.getElementById('calcHint').style.display = 'none';
+    document.getElementById('calcFootnote').style.display = 'none';
+  }
+});
+inp.addEventListener('blur', () => { const v = parseAmt(inp.value); if (v > 0) inp.value = v.toLocaleString('en-IN'); });
 
-const feeInp = document.getElementById('feeAmt');
-feeInp.addEventListener('input', () => {
-  selectedPlan = null;
-  document.getElementById('summaryStrip').classList.remove('show');
-  renderPlans();
-});
-feeInp.addEventListener('blur', () => {
-  const v = parseAmt(feeInp.value);
-  if (v > 0) feeInp.value = v.toLocaleString('en-IN');
-});
+// Hide on load
+document.getElementById('calcSummaryStrip').classList.remove('show');
+document.getElementById('plansGrid').style.display = 'none';
+document.getElementById('calcHint').style.display = 'none';
 </script>
 </body>
 </html>
